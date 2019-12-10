@@ -1,1 +1,6 @@
-
+#include <iostream> 
+#include <stdio.h> 
+using namespace std; 
+#define MAX 20  
+struct Queue { 	int front, rear;
+string data[MAX]; }Q;  bool isFull() { 	return Q.rear == MAX; }  bool isEmpty() { 	return Q.rear == 0; } 
