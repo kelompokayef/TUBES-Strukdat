@@ -1,1 +1,84 @@
+#include <iostream> 
+#include "header.h" 
+using namespace std; 
 
+void printQueue(){ 	
+	if (isEmpty()) {     
+	cout << "Belum ada buku yang dipinjam"<<endl; 	} 	
+	else { 		
+		cout << "Buku yang dipinjam : "; 		
+for (int i = Q.front; i < Q.rear; i++) 			
+	cout << Q.data[i]; 		
+	cout << endl;   } 
+	}  
+void sorting(){
+	cout<<"Buku yang dipinjam "<<endl;
+        for (int i = Q.front; i < Q.rear; i++) 			
+	cout << Q.data[i] << ((Q.rear-1 == i) ? "" : ", "); 		
+	cout << endl;   } 
+void search(){
+	
+	string cari,ada;
+int i,n;
+
+ada="0";
+
+cin>>cari;
+
+for(i=0;i<20;i++){
+	
+	if(Q.data[i]==cari){
+	ada="1";
+	}
+	
+if(ada=="1"){
+	cout<<"buku berjudul "<<cari<<" terdapat di antara pinjaman anda"<<endl;
+	break;
+}
+
+else{
+	cout<<"buku berjudul "<<cari<<" tidak terdapat di antara pinjaman anda"<<endl;
+}
+
+	
+}
+}
+void enqueue() { 	
+if (isFull()) 	{ 		
+	cout << "Anda tidak bisa meminjam buku lagi"<<endl; 	
+	} 	
+	else { 		
+	string data; 		
+	cout << "Masukkan Judul Buku : ";cin >> data; 		
+	Q.data[Q.rear] = data; 		
+	Q.rear++; 		
+cout << "Buku berjudul "<<data<<" ditambahkan\n"; 		
+printQueue(); 	} 
+}  
+void dequeue() { 	
+if (isEmpty()) 	{ 		
+	cout << "Belum ada buku yang dipinjam"<<endl; 	} 	
+else{ 		
+	cout << "Mengembalikan buku \"" << Q.data[Q.front] << "\"..." << endl; 		
+for (int i = Q.front; i < Q.rear; i++) 			
+Q.data[i] = Q.data[i + 1]; 		
+Q.rear--; 		
+printQueue(); 	} 
+}  
+
+int main() { 	
+int choose; 		
+cout << "*********************************\n" 		<< "   Meminjam Buku Perpustakaan\n" 		<< "*********************************\n"; 		
+
+do 	{cout << "******************\n" 			<< "   Menu Pilihan\n" 			<< "******************\n" 			<< " [1] Meminjam \n" 			<< " [2] Mengembalikan\n" 	<< " [3] Mencari\n" 		
+<< " [4] Tampilkan Semua \n" 			<< " [5] Keluar \n\n" << "******************\n" 			<< "Masukkan pilihan : "; 
+cin >> choose; 		
+switch (choose)  		{ 		case 1: 			enqueue(); 			break; 		case 2: 			dequeue(); 			break;
+case 3:search(); case 4: sorting();
+
+break; 		default: 			cout << "Pilihan tidak tersedia"; 			break; 		} 	} while (choose !=4); 	return 0; 
+
+
+
+
+} 
